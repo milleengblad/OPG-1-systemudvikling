@@ -1,0 +1,57 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor Underviser
+Underviser -> BestBooking: Login
+activate BestBooking
+activate Automatisksystem
+activate Sekretær
+
+BestBooking -> Automatisksystem: Verificer bruger
+alt Succesfuldt login
+    Automatisksystem --> BestBooking: Bruger godkendt
+    BestBooking -> Underviser: Menu
+else Bruger ikke fundet
+    Automatisksystem --> BestBooking: Ukendt bruger
+    BestBooking -> Underviser: Log ud
+
+end
+
+Underviser -> BestBooking: Fremvis skema
+BestBooking -> Automatisksystem: Skema fundet?
+alt Skema fundet
+    Automatisksystem --> BestBooking: Skema fundet
+    BestBooking -> Underviser: Vis skema
+else Skema ikke fundet
+    Automatisksystem --> BestBooking: Skema ikke fundet
+    BestBooking -> Underviser: Kunne ikke fremvise skema - prøv ny browser
+end
+
+
+Underviser -> BestBooking: Slet lektion
+BestBooking -> Automatisksystem: Opdatering i skema?
+alt Ændring foretaget
+    Automatisksystem --> BestBooking: Succesfuld ændring
+    BestBooking --> Underviser: Skema ændret
+else Ændring ikke foretaget
+    Automatisksystem --> BestBooking: Ikke succesfuld ændring
+    BestBooking --> Underviser: Skema ikke ændret
+end
+
+Underviser -> Sekretær: Forespørgsel om at slette lektion
+alt Alternativ succesfuld ændring foretaget
+
+Sekretær --> BestBooking: Succesfuld manuel ændring
+BestBooking --> Underviser: Notifikation om foretaget ændring
+end
+
+
+
+
+
+
+
+
+
+@enduml

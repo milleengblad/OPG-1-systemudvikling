@@ -1,0 +1,124 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Sekretære "1..*"--"1..*" Registrering
+Studerende "1..*"-- "1..*" Registrering
+Undervisere "1..*"-- "1..*" Registrering
+TA "0..*"--"0..*" Studerende
+Ansatte <|-- TA
+Ansatte <|-- Undervisere
+Personer <|-- Ansatte
+Personer <|-- Studerende
+Ansatte <|-- Sekretære
+Undervisningsafdeling "1..*" o-- "1..*" Ansatte
+Universiteter "1" *-- "1..*" Undervisningsafdeling
+Universiteter "1..2" -- "1..*" Personer
+Universiteter "1" *-- "1..*" Kurser
+Studerende "0..*"-down-"1..*" Kurser
+Ansatte "1..*"--"1..*" Kurser
+Registrering "1..*"--"1" Automatisksystem
+
+class Automatisksystem {
+-Godkend ()
+-Afvis ()
+}
+
+class Kurser {
+
+-Kursuskode ()
+-Kursusnavn
+-Set aktiv ()
+-Fakultetskode ()
+-Startdato ()
+-Slutdato ()
+}
+
+class Universiteter {
+-Navn på universitet
+-KU ()
+-DTU ()
+}
+
+class Undervisningsafdeling {
+-Navn på afdeling
+- SCIENCE ()
+-SUND ()
+-mv. ()
+}
+
+class Personer {
+Titel
+Fornavn
+Mellemnavn
+Efternavn
+Fuldenavn
+Fødselsdag
+CPR-nr
+Køn
+Addresse tilknytning
+Telefon nr
+Email
+}
+
+class Ansatte {
+-Medarbejder nr
+-Get ansættelsesdato ()
+-Get udannelsesnavn ()
+-Sprog ()
+-Løn ()
+}
+
+class TA {
+-TA nr
+-Se ledige lokaler ()
+-Book lokale ()
+-Skema for undervisning ()
+}
+
+class Studerende {
+-Studie nr
+-Semester nr.
+-Navn på uddannelse
+-Skema for undervisning ()
+-Undervisnings placering ()
+-Afmeld kurser ()
+-Tilmeld kurser ()
+}
+
+class Sekretære {
+-Kontor nr
+- Se lokale bookinger ()
+-Publicere skema for undervisere og studerende ()
+}
+
+class Undervisere {
+-Initialer
+-Book lokale ()
+-Se ledige lokaler ()
+-Vælg kurser at undervise ()
+-Opret nye kurser ()
+-Ændre i kurser ()
+-Fjern kurser ()
+-Skema for undervisning ()
+}
+
+class Registrering {
+-Se ledige lokaler ()
+-Book lokale ()
+-Vælg kurser ()
+-Afmeld kurser ()
+-Tilmeld kurser ()
+-Opret kurser ()
+-Kursusoversigt
+-Lokale oversigt
+-Vælg kurser at undervise ()
+-Ændre i kurser ()
+-Fjern kurser ()
+-Skema for undervisning ()
+-Se lokalebookinger ()
+-Undervisnings placering ()
+-Publicere skema for undervisere og studerende ()
+}
+
+
+@enduml

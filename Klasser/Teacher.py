@@ -1,17 +1,15 @@
-from Klasser.Ansatte import Ansatte
-
-class Underviser(Ansatte):
+class Teacher:
     """KLasse med information om Underviseren"""
-    def __init__(self, titel, firstname, surname, cpr_number, sex, address, phone_nr, mail):
+    def __init__(self, titel, firstname, surname, cpr_number, address, phone_nr, mail, IDnr, course):
         self.titel = titel
         self.firstname = firstname
         self.surname = surname
         self.cpr_number = cpr_number
-        self.sex = sex
         self.address = address
         self.phone_nr = phone_nr
         self.mail = mail
-  #      self.age = age
+        self.IDnr = IDnr
+        self.course = course
 
         # getters og setters
     def get_titel(self): return self.titel
@@ -26,9 +24,6 @@ class Underviser(Ansatte):
     def get_cpr_number(self): return self.cpr_number
     def set_cpr_number(self, new_cpr_number): self.cpr_number = new_cpr_number
 
-    def get_sex(self): return self.sex
-    def set_sex(self, new_sex): self.sex = new_sex
-
     def get_address(self): return self.address
     def set_address(self, new_address): self.address = new_address
 
@@ -37,3 +32,9 @@ class Underviser(Ansatte):
 
     def get_mail(self): return self.mail
     def set_mail(self, new_mail): self.mail = new_mail
+
+    def get_IDnr(self): return self.IDnr
+    def set_IDnr(self, new_IDnr): self.IDnr = new_IDnr
+
+    def get_course(self): return self.course
+    def set_course(self, new_course): self.course = new_course

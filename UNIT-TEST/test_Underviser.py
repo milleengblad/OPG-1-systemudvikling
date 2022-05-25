@@ -1,5 +1,5 @@
 
-from Klasser.Underviser import Underviser
+from Klasser.Teacher import Underviser
 
 def test_get_age():
     und=Underviser('Lektor', 'Jakob', 'Nielsen', '190590-9999',
