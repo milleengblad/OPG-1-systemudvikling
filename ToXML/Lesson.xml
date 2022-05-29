@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<les>
+  <les>
+    <IDlesson>1</IDlesson>
+    <type>Forelæsning</type>
+    <date>20220329</date>
+    <starttime>10</starttime>
+    <endtime>KU</endtime>
+    <university>105</university>
+    <room>11</room>
+  </les>
+  <les>
+    <IDlesson>2</IDlesson>
+    <type>Forelæsning</type>
+    <date>20220329</date>
+    <starttime>11</starttime>
+    <endtime>KU</endtime>
+    <university>105</university>
+    <room>12</room>
+  </les>
+</les>

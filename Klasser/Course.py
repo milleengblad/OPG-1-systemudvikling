@@ -1,6 +1,8 @@
+from datetime import date
+
 class Kursus:
-    """Dette er en class for kursus"""
-    def __init__(self, IDcourse, course_name, duration, location, university):
+    """Class for course"""
+    def __init__(self, IDcourse, course_name, duration:date, location, university):
         self.IDcourse = IDcourse
         self.course_name = course_name
         self.duration = duration

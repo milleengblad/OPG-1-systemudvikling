@@ -1,0 +1,11 @@
+<Lessons>
+    <lesson>
+        <IDlesson>1</IDlesson>
+        <type>Forel&#230;sning</type>
+        <date>2022-03-09</date>
+        <starttime>10:15:00</starttime>
+        <endtime>11:00:00</endtime>
+        <university>KU</university>
+        <room>105</room>
+    </lesson>
+</Lessons>

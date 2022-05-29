@@ -1,6 +1,14 @@
+from enum import Enum
+from datetime import date
+from datetime import datetime
+
+class type(Enum):
+    SAU = 1
+    Forelaesning = 2
+
 class Approve_or_reject_request:
-    """Dette er en class for anmod om lokaleskift"""
-    def __init__(self, IDrequest, IDlesson, type, date, time, location, room, request, approve, reject):
+    """This is the class for the approval or rejection of deleting a course"""
+    def __init__(self, IDrequest, IDlesson, type:type, date:date, time:datetime, location, room, request, approve, reject):
         self.IDrequest = IDrequest
         self.IDlesson = IDlesson
         self.type = type

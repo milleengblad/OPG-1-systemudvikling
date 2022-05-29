@@ -1,10 +1,12 @@
+from stdnum.dk import cpr
+
 class Secretary:
-    """KLasse med information om Underviseren"""
-    def __init__(self, titel, firstname, surname, cpr_number, address, phone_nr, mail, IDnr, university):
+    """Class for secretary"""
+    def __init__(self, titel, firstname, surname, cpr:cpr, address, phone_nr, mail, IDnr, university):
         self.titel = titel
         self.firstname = firstname
         self.surname = surname
-        self.cpr_number = cpr_number
+        self.cpr = cpr
         self.address = address
         self.phone_nr = phone_nr
         self.mail = mail
@@ -21,8 +23,8 @@ class Secretary:
     def get_surname(self): return self.surname
     def set_surname(self, new_surname): self.surname = new_surname
 
-    def get_cpr_number(self): return self.cpr_number
-    def set_cpr_number(self, new_cpr_number): self.cpr_number = new_cpr_number
+    def get_cpr(self): return self.cpr
+    def set_cpr(self, new_cpr): self.cpr = new_cpr
 
     def get_address(self): return self.address
     def set_address(self, new_address): self.address = new_address

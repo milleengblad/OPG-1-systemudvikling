@@ -17,7 +17,7 @@ note right of UC3 : Rød = Optaget, Grøn = Ledig, Grå = tilhørende anden unde
 
 actor Underviser as u
 actor Sekretær as b
-    usecase "Forespørgsel til kursusændring" as u2
+    usecase "Forespørgsel til sletning af Forelæsning/SAU" as u2
 
 u --> (u2)
 

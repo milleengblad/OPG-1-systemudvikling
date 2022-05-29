@@ -1,9 +1,8 @@
 @startuml
-'https://plantuml.com/class-diagram
+'https://plantuml.com/class-diagram'
 
-Sekretære "1..*"--"1..*" Registrering
-Studerende "1..*"-- "1..*" Registrering
-Undervisere "1..*"-- "1..*" Registrering
+
+Personer "1..*"-left- "1" Database
 TA "0..*"--"0..*" Studerende
 Ansatte <|-- TA
 Ansatte <|-- Undervisere
@@ -11,114 +10,139 @@ Personer <|-- Ansatte
 Personer <|-- Studerende
 Ansatte <|-- Sekretære
 Undervisningsafdeling "1..*" o-- "1..*" Ansatte
-Universiteter "1" *-- "1..*" Undervisningsafdeling
+Universiteter "1" *-up- "1..*" Undervisningsafdeling
 Universiteter "1..2" -- "1..*" Personer
-Universiteter "1" *-- "1..*" Kurser
-Studerende "0..*"-down-"1..*" Kurser
-Ansatte "1..*"--"1..*" Kurser
-Registrering "1..*"--"1" Automatisksystem
 
-class Automatisksystem {
--Godkend ()
--Afvis ()
+Studerende "1..*"-down-"1" Skema
+
+Skema "1..*"--"1..*" Kurser
+Kurser "1..*"--"1..*" Undervisningsafdeling
+
+Database "1"-left-"0..*" Login
+Lektioner "0..*"--"1" Kurser
+Lektioner "0..*"--"1..*" Ansatte
+Skema "1"--"1..*" Undervisere
+TA"0..*"--"1..*"Skema
+Ansatte "1"--"0..*"Anmodning_til_slet_lektion
+Anmodning_til_slet_lektion"1"--"1"Status_på_Anmodning
+Status_på_Anmodning"1"--"1"Godkend_eller_afvis
+
+class Database {
+-BestBooking
+-Valider login()
+}
+
+class Godkend_eller_afvis {
+-Validering
+}
+
+class Status_på_Anmodning {
+-Status
+}
+
+class Anmodning_til_slet_lektion {
+-Anmodning nr
 }
 
 class Kurser {
-
--Kursuskode ()
--Kursusnavn
--Set aktiv ()
--Fakultetskode ()
--Startdato ()
--Slutdato ()
+-Navn
+-Varighed
 }
 
 class Universiteter {
--Navn på universitet
--KU ()
--DTU ()
+-Navn; KU, DTU
 }
 
 class Undervisningsafdeling {
--Navn på afdeling
-- SCIENCE ()
--SUND ()
--mv. ()
+-Navn; SCIENCE, SUND, DTUSCIENCE
 }
 
 class Personer {
-Titel
-Fornavn
-Mellemnavn
-Efternavn
-Fuldenavn
-Fødselsdag
-CPR-nr
-Køn
-Addresse tilknytning
-Telefon nr
-Email
+-Fornavn
+-Efternavn
+-Vejnavn
+-Vej nr
+-Tlf.nr
+-Email
+-Initialer
+-CPR
+
 }
 
 class Ansatte {
 -Medarbejder nr
--Get ansættelsesdato ()
--Get udannelsesnavn ()
--Sprog ()
--Løn ()
 }
 
 class TA {
--TA nr
+-Medarbejder nr
 -Se ledige lokaler ()
 -Book lokale ()
--Skema for undervisning ()
+-Se kursusoversigt ()
+-Se lokaleoversigt ()
+-Se skema for undervisning ()
+-Se lokalebookinger ()
+-Se undervisnings placering ()
 }
 
 class Studerende {
--Studie nr
+-Studie nr.
 -Semester nr.
--Navn på uddannelse
--Skema for undervisning ()
--Undervisnings placering ()
+-Se skema for undervisning ()
+-Se undervisnings placering ()
 -Afmeld kurser ()
 -Tilmeld kurser ()
+-Se kursusoversigt()
 }
 
 class Sekretære {
--Kontor nr
-- Se lokale bookinger ()
+-Medarbejder nr
 -Publicere skema for undervisere og studerende ()
-}
-
-class Undervisere {
--Initialer
--Book lokale ()
--Se ledige lokaler ()
--Vælg kurser at undervise ()
--Opret nye kurser ()
--Ændre i kurser ()
--Fjern kurser ()
--Skema for undervisning ()
-}
-
-class Registrering {
 -Se ledige lokaler ()
 -Book lokale ()
 -Vælg kurser ()
 -Afmeld kurser ()
 -Tilmeld kurser ()
 -Opret kurser ()
--Kursusoversigt
--Lokale oversigt
--Vælg kurser at undervise ()
+-Se kursusoversigt ()
+-Se lokale oversigt ()
 -Ændre i kurser ()
--Fjern kurser ()
--Skema for undervisning ()
+-Fjern kurser/lektioner ()
+-Se skema for undervisning ()
 -Se lokalebookinger ()
--Undervisnings placering ()
--Publicere skema for undervisere og studerende ()
+-Se undervisnings placering ()
+-Se status på anmodninger ()
 }
 
+class Undervisere {
+-Universiteter
+-Medarbejder nr
+-Skema
+-Se ledige lokaler ()
+-Book lokale ()
+-Se kursusoversigt ()
+-Se lokaleoversigt ()
+-Ændre i kurser ()
+-Fjern kurser/lektioner ()
+-Se skema for undervisning ()
+-Se lokalebookinger ()
+-Se undervisnings placering ()
+-Se status på anmodninger ()
+}
 
+class Login {
+-Brugernavn
+-Kodeord
+}
+
+class Lektioner {
+-Type
+-Starttid
+-Lokale
+-Universiteter
+-Sluttid
+}
+
+class Skema {
+-Uddannelsesnavn
+}
 @enduml

@@ -1,6 +1,15 @@
+from enum import Enum
+from datetime import date
+from datetime import datetime
+
+class type(Enum):
+    SAU = 1
+    Forelaesning = 2
+
+
 class Request_to_delete:
-    """Dette er en class for anmod om lokaleskift"""
-    def __init__(self, IDrequest, IDlesson, type, date, time, location, room, request):
+    """Class for making a request to delete a lesson"""
+    def __init__(self, IDrequest, IDlesson, type:type, date:date, time:datetime, location, room, request):
         self.IDrequest = IDrequest
         self.IDlesson = IDlesson
         self.type = type

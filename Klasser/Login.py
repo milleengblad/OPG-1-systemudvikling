@@ -1,6 +1,6 @@
 class Login:
-    """Dette er en class for login-siden"""
-    def __init__(self, username: str, password: str, validate_user: str):
+    """Class for login"""
+    def __init__(self, username, password, validate_user):
         self.username = username
         self.password = password
         self.validate_user = validate_user
